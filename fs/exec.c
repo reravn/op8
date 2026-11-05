@@ -1738,6 +1738,10 @@ static int __do_execve_file(int fd, struct filename *filename,
 	struct files_struct *displaced;
 	int retval;
 
+#ifdef CONFIG_KSU_MANUAL_HOOK
+	ksu_handle_execveat(&fd, &filename, &argv, &envp, &flags)
+#endif
+
 	if (IS_ERR(filename))
 		return PTR_ERR(filename);
 
@@ -1890,6 +1894,9 @@ out_files:
 	if (displaced)
 		reset_files_struct(displaced);
 out_ret:
+#ifdef CONFIG_KSU_MANUAL_HOOK
+	ksu_handle_post_execveat(&fd, &filename, &argv, &envp, &flags, &retval)
+#endif
 	if (filename)
 		putname(filename);
 	return retval;
