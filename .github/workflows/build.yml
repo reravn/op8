@@ -23,7 +23,6 @@ jobs:
           ksu: true
           ksu-other: true
           ksu-url: https://github.com/Baka-SU/BakaSU
-          nomount: true
           ccache: true
           config: ksu_defconfig
           arch: arm64
