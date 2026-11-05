@@ -22,7 +22,7 @@ jobs:
           depth: 1
           ksu: true
           ksu-other: true
-          ksu-url: https://github.com/Baka-SU/BakaSU
+          ksu-url: https://github.com/resukisu/resukisu
           ccache: true
           config: ksu_defconfig
           arch: arm64
